@@ -1,0 +1,39 @@
+<?php
+
+namespace QuadStudio\Service\Site\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Site;
+
+
+class RetailOrder extends Model
+{
+	protected $table = 'retail_orders';
+	
+	 protected $fillable = [
+        'phone_number','contact','comment'
+    ];
+
+
+	public function quantity()
+	{
+		return $this->items->sum('quantity');
+	}
+
+
+	/**
+	 * Order items
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function items()
+	{
+		return $this->hasMany(RetailOrderItem::class);
+	}
+    
+    public function userAddress()
+    {
+        return $this->belongsTo(Address::class, 'user_address_id');
+    }
+
+}

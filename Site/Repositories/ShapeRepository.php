@@ -1,0 +1,27 @@
+<?php
+
+namespace ServiceBoiler\Prf\Site\Repositories;
+
+use ServiceBoiler\Repo\Eloquent\Repository;
+use ServiceBoiler\Prf\Site\Models\Shape;
+
+class ShapeRepository extends Repository
+{
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    public function model()
+    {
+        return Shape::class;
+    }
+
+    /**
+     * @return array
+     */
+    public function track():array
+    {
+        return [];
+    }
+}
